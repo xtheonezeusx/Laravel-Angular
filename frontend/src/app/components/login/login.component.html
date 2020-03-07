@@ -1,1 +1,39 @@
-<p>login works!</p>
+<div class="mt-4 col-8 offset-2">
+    <div class="card">
+        <div class="card-header">
+            Login Here
+        </div>
+        <div class="card-body">
+            <form  #loginForm="ngForm" (ngSubmit)="onSubmit()">
+
+                <div class="alert alert-danger" [hidden]="!error">
+                    {{ error }}
+                </div>
+
+                <div class="form-group row">
+                  <label for="email" class="col-sm-2 col-form-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="email" name="email" 
+                    [(ngModel)]="form.email" #email="ngModel"
+                    required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="password" name="password" 
+                      [(ngModel)]="form.password" #password="ngModel"
+                      required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-2">
+                      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Sign in</button>
+                      <a class="btn btn-info float-right" routerLink="/signup">Sign Up</a>
+                    </div>
+                </div>
+            </form>
+            {{ form | json }}
+        </div>
+    </div>
+</div>

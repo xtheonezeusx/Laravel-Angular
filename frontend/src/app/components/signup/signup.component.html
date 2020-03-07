@@ -1,1 +1,64 @@
-<p>signup works!</p>
+<div class="mt-4 col-8 offset-2">
+    <div class="card">
+        <div class="card-header">
+            Register Here
+        </div>
+        <div class="card-body">
+            <form  #signupForm="ngForm" (ngSubmit)="onSubmit()">
+            
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label">Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="name" name="name" 
+                        [(ngModel)]="form.name" #email="ngModel"
+                        required>
+                        <div class="alert alert-danger" [hidden]="!error.name">
+                            {{ error.name }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="email" class="col-sm-4 col-form-label">Email</label>
+                  <div class="col-sm-8">
+                        <input type="email" class="form-control" id="email" name="email" 
+                        [(ngModel)]="form.email" #email="ngModel"
+                        required>
+                        <div class="alert alert-danger" [hidden]="!error.email">
+                            {{ error.email }}
+                        </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="password" class="col-sm-4 col-form-label">Password</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" id="password" name="password" 
+                        [(ngModel)]="form.password" #password="ngModel"
+                        required>
+                        <div class="alert alert-danger" [hidden]="!error.password">
+                            {{ error.password }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="password_confirmation" class="col-sm-4 col-form-label">Confirm Password</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" 
+                        [(ngModel)]="form.password_confirmation" #password_confirmation="ngModel"
+                        required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-8 offset-4">
+                        <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Sign Up</button>
+                        <a class="btn btn-info float-right" routerLink="/login">Sign In</a>
+                    </div>
+                </div>
+            </form>
+            {{ form | json }}
+        </div>
+    </div>
+</div>
